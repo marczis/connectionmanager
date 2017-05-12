@@ -1,12 +1,11 @@
 #!/bin/bash
 
-
-function dia()
+function src()
 {
-    exec 3>&1
-    DRET=$(dialog "$@" 2>&1 1>&3)
-    exec 3>&-
+    source $(dirname $0)/inc/$1
 }
+
+src functions.sh
 
 function setup()
 {
@@ -19,15 +18,22 @@ function setup()
     fi
 }
 
+function CM_1()
+{
+    dia --inputbox "Test" 0 0
+}
+
 function main()
 {
     setup
-    dia --menu "CM" 100 100 100 "1" "Connect to the network"
-    case $DRET in
-        1) echo "Connect to the Internet woo hoo"
-           read
-            ;;
-    esac
+    menu "CM" \
+        "1" "Connect to the network"
+
+    #case $DRET in
+    #    1) echo "Connect to the Internet woo hoo"
+    #       read
+    #        ;;
+    #esac
 }
 
 main
