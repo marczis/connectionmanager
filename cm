@@ -1,11 +1,19 @@
 #!/bin/bash
 
+#Some config
+DEF_LAN_DEV="enp0s31f6"
+DEF_WLAN_DEV="wlp4s0"
+
+#So we won't expose the extra files on the PATH
 function src()
 {
     source $(dirname $0)/inc/$1
 }
 
-src functions.sh
+src "functions.sh"
+src "ifsmenu.sh"
+src "connectmenu.sh"
+src "mainmenu.sh"
 
 function setup()
 {
@@ -18,17 +26,15 @@ function setup()
     fi
 }
 
-function CM_1()
-{
-    dia --inputbox "Test" 0 0
-}
-
 function main()
 {
     setup
-    menu "CM" \
-        "1" "Connect to the network"
-
+    while [ 1 ] ; do
+        mainmenu
+        if [ $? -ne 0 ] ; then
+            break
+        fi
+    done
     #case $DRET in
     #    1) echo "Connect to the Internet woo hoo"
     #       read
@@ -37,3 +43,6 @@ function main()
 }
 
 main
+
+#cleanup
+tmux kill-pane -a
