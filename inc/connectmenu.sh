@@ -17,7 +17,7 @@ function reset_connections()
     sudo ip l s eth0 up
     sudo ip a f dev eth0
 
-    sudo rfkill unblock all
+    #TODO sudo rfkill unblock all
     sudo ip l s ${DEF_LAN_DEV} down
     sudo ip l s ${DEF_WLAN_DEV} name wifi
     sudo ip l s wifi up

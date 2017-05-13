@@ -17,6 +17,7 @@ src "connectmenu.sh"
 src "mainmenu.sh"
 src "wifimenu.sh"
 src "ssidmenu.sh"
+src "nsmenu.sh"
 
 function setup()
 {
