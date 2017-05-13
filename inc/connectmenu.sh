@@ -32,14 +32,24 @@ function reset_connections()
 function getip()
 {
     local if=$1
-    tmux split -t "CM.0" "sudo dhclient -i ${if} -d"
+    local tpane=$2
+    local horiz=$3
+    tmux split -t $tpane $horiz "sudo dhclient -i ${if} -d"
     tmux last-pane
+}
+
+function connect_wifi()
+{
+    local config=$1
+    tmux split -t "CM.0" "sudo wpa_supplicant -i wifi -c $config -d"
+    tmux last-pane
+    getip "wifi" "CM.1" "-h"
 }
 
 function CCM_1()
 {
     reset_connections
-    getip "eth0"
+    getip "eth0" "CM.0"
 }
 
 function CCM_2()
@@ -58,12 +68,12 @@ function CCM_2()
 
 function CCM_3()
 {
-#WIFI
-    echo
+    wifimenu 
+    connect_wifi "$RET"
 }
 
 function CCM_4()
 {
-#NEW Wifi
-    echo
+    ssidmenu
+    local ssid="$RET"
 }

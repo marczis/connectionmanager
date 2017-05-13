@@ -3,6 +3,7 @@
 #Some config
 DEF_LAN_DEV="enp0s31f6"
 DEF_WLAN_DEV="wlp4s0"
+WIFI_CONF_DIR="$HOME/pro/wifi"
 
 #So we won't expose the extra files on the PATH
 function src()
@@ -14,6 +15,8 @@ src "functions.sh"
 src "ifsmenu.sh"
 src "connectmenu.sh"
 src "mainmenu.sh"
+src "wifimenu.sh"
+src "ssidmenu.sh"
 
 function setup()
 {
@@ -44,5 +47,7 @@ function main()
 
 main
 
+echo "Dead jim... dead."
+read
 #cleanup
 tmux kill-pane -a
