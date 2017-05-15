@@ -4,6 +4,7 @@
 DEF_LAN_DEV="enp0s31f6"
 DEF_WLAN_DEV="wlp4s0"
 WIFI_CONF_DIR="$HOME/pro/wifi"
+NAMESPACE="Default"
 
 #So we won't expose the extra files on the PATH
 function src()

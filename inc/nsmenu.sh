@@ -7,24 +7,27 @@ function nsmenu()
         "4" "Add interface into namespace" \
         "5" "Remove interface from namespace" \
         "6" "List interfaces in namespace" \
-        "7" "Overview"
+        "7" "Overview" \
+        "8" "Switch namespace"
+    return $?
 }
 
 function nsselectmenu()
 {
-    menu "IPNS" "Please select namespace" $(sudo ip netns | nl) 2>/dev/null
+    menu "IPNS" "Please select namespace" $(sudo ip netns | nl) 2>/dev/null || return -1
     RET=$(sudo ip netns | sed "$DRET!d")
+    return $DSTA
 }
 
 function NS_1() #Create NS
 { 
-    dia --inputbox "Provide name" 0 0
+    dia --inputbox "Provide name" 0 0 || return
     sudo ip netns add $DRET
 }
 
 function NS_2() #Remove NS
 {
-    nsselectmenu
+    nsselectmenu || return
     sudo ip netns del "$RET"
 }
 
@@ -36,25 +39,33 @@ function NS_3() #List NS
 
 function NS_4() #Add if
 {
-    nsselectmenu
+    nsselectmenu || return
     local ns=$RET
-    ifsmenu
+    ifsmenu || return
     sudo ip l s $RET down
-    sudo ip l s $RET netns $ns
+    sudo iw dev | grep Interface | grep $RET &> /dev/null
+    if [ $? -ne 0 ] ; then
+        #Ethernet
+        sudo ip l s $RET netns $ns
+    else
+        #Wifi
+        echo Pass
+        #TODO
+    fi
 }
 
 function NS_5() #Remove if
 { 
-    nsselectmenu
+    nsselectmenu || return
     local ns=$RET
-    ifsmenu "-netns $ns"
+    ifsmenu "-netns $ns" || return
     sudo ip -netns $ns l s $RET down
     sudo ip -netns $ns l s $RET netns 1
 }
 
 function NS_6() #List if
 {
-    nsselectmenu
+    nsselectmenu || return
     clear
     sudo ip -c -netns $RET l l | less -R
 }
@@ -70,4 +81,10 @@ function NS_7()
         sudo ip -c -netns $i l
     done
     } | less -R
+}
+
+function NS_8()
+{
+    nsselectmenu || return
+    NAMESPACE=$RET 
 }

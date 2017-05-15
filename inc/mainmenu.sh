@@ -17,8 +17,14 @@ function CM_e()
 
 function mainmenu()
 {
-    menu "CM" "Connection Manager" \
+    menu "CM" "Connection Manager [$NAMESPACE]" \
         "1" "Connect to the network" \
         "2" "Handle namespaces" \
         "e" "Exit"
+
+    if [ "$DRET" == "e" ] ; then
+        return -1
+    else
+        return 0
+    fi
 }

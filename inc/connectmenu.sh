@@ -5,6 +5,7 @@ function connectmenu()
         "2" "Ethernet Office" \
         "3" "Known WIFI" \
         "4" "New WIFI"
+    return $?
 }
 
 function reset_connections()
@@ -17,8 +18,8 @@ function reset_connections()
     sudo ip l s eth0 up
     sudo ip a f dev eth0
 
-    #TODO sudo rfkill unblock all
-    sudo ip l s ${DEF_LAN_DEV} down
+    sudo rfkill unblock all
+    sudo ip l s ${DEF_WLAN_DEV} down
     sudo ip l s ${DEF_WLAN_DEV} name wifi
     sudo ip l s wifi up
     sudo ip a f dev wifi
@@ -68,12 +69,26 @@ function CCM_2()
 
 function CCM_3()
 {
+    reset_connections
     wifimenu 
     connect_wifi "$RET"
 }
 
 function CCM_4()
 {
+    reset_connections
     ssidmenu
-    local ssid="$RET"
+    local ssid="$RET" 
+    local conf="${WIFI_CONF_DIR}/${ssid}.conf"
+    while [ 1 ] ; do
+        dia --inputbox "Please provide password" 0 0 || return -1
+        echo $DRET | wpa_passphrase $ssid > $conf
+        if [ $? -eq 0 ] ; then
+            break
+        fi
+        clear
+        cat $conf
+        read
+    done
+    connect_wifi "$conf"
 }

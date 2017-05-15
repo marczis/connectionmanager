@@ -4,6 +4,7 @@ function dia()
     DRET=$(dialog "$@" 2>&1 1>&3)
     DSTA=$?
     exec 3>&-
+    return $DSTA
 }
 
 function menu()
@@ -13,7 +14,12 @@ function menu()
     shift 2
     dia --menu "$title" 0 100 100 "$@"
     if [ $DSTA -eq 0 ] ; then
-        ${pref}_${DRET}
+        type ${pref}_${DRET} &> /dev/null
+        if [ $? -eq 0 ] ; then
+            ${pref}_${DRET}
+            return $?
+        fi
+        return 0
     else
         return $DSTA
     fi
