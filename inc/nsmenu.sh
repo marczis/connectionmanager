@@ -14,6 +14,7 @@ function nsmenu()
 
 function nsselectmenu()
 {
+    #TODO Add here default !
     menu "IPNS" "Please select namespace" $(sudo ip netns | nl) 2>/dev/null || return -1
     RET=$(sudo ip netns | sed "$DRET!d")
     return $DSTA

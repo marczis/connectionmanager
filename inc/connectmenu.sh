@@ -28,6 +28,9 @@ function reset_connections()
     sudo ip l d test_wan
     sudo ip l d test_lan
     sudo ip l d rpi_ctrl
+
+    #Workaround for my failing ethernet
+    sudo ethtool -K eth0 gso off gro off tso off
 }
 
 function getip()
@@ -64,7 +67,7 @@ function CCM_2()
     sudo ip l s test_wan up
     sudo ip l s test_lan up
     sudo ip l s rpi_ctrl up
-    getip "office"
+    getip "office" "CM.0"
 }
 
 function CCM_3()

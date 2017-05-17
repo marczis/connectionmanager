@@ -10,6 +10,16 @@ function CM_2()
     nsmenu
 }
 
+function CM_3()
+{
+    vlanmenu
+}
+
+function CM_6()
+{
+    vpnmenu
+}
+
 function CM_e()
 {
     return -1
@@ -20,6 +30,12 @@ function mainmenu()
     menu "CM" "Connection Manager [$NAMESPACE]" \
         "1" "Connect to the network" \
         "2" "Handle namespaces" \
+        "3" "VLANs" \
+        "4" " - Bridge" \
+        "5" " - IP" \
+        "6" "VPN" \
+        "7" " - Routing" \
+        "8" " - Tap" \
         "e" "Exit"
 
     if [ "$DRET" == "e" ] ; then
