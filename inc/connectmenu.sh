@@ -33,27 +33,18 @@ function reset_connections()
     sudo ethtool -K eth0 gso off gro off tso off
 }
 
-function getip()
-{
-    local if=$1
-    local tpane=$2
-    local horiz=$3
-    tmux split -t $tpane $horiz "sudo dhclient -i ${if} -d"
-    tmux last-pane
-}
-
 function connect_wifi()
 {
     local config=$1
     tmux split -t "CM.0" "sudo wpa_supplicant -i wifi -c $config -d"
     tmux last-pane
-    getip "wifi" "CM.1" "-h"
+    getip "wifi"
 }
 
 function CCM_1()
 {
     reset_connections
-    getip "eth0" "CM.0"
+    getip "eth0"
 }
 
 function CCM_2()
@@ -67,7 +58,7 @@ function CCM_2()
     sudo ip l s test_wan up
     sudo ip l s test_lan up
     sudo ip l s rpi_ctrl up
-    getip "office" "CM.0"
+    getip "office"
 }
 
 function CCM_3()

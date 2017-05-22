@@ -6,7 +6,9 @@ DEF_WLAN_DEV="wlp4s0"
 WIFI_CONF_DIR="$HOME/pro/wifi"
 VPN_CONF_DIR="$HOME/PDOne/vpn"
 NAMESPACE="Default"
+TEMPDIR="/tmp/cm"
 
+sudo mkdir -p $TEMPDIR
 #So we won't expose the extra files on the PATH
 function src()
 {
@@ -22,6 +24,7 @@ src "ssidmenu.sh"
 src "nsmenu.sh"
 src "vlanmenu.sh"
 src "vpnmenu.sh"
+src "ipmenu.sh"
 
 function setup()
 {
@@ -55,4 +58,4 @@ main
 echo "Dead jim... dead."
 read
 #cleanup
-tmux kill-pane -a
+tmux kill-session

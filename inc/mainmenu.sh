@@ -15,6 +15,10 @@ function CM_3()
     vlanmenu
 }
 
+function CM_5()
+{
+    ipmenu
+}
 function CM_6()
 {
     vpnmenu
@@ -32,7 +36,7 @@ function mainmenu()
         "2" "Handle namespaces" \
         "3" "VLANs" \
         "4" " - Bridge" \
-        "5" " - IP" \
+        "5" "IP" \
         "6" "VPN" \
         "7" " - Routing" \
         "8" " - Tap" \
