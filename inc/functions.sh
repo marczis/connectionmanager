@@ -25,3 +25,9 @@ function menu()
     fi
 }
 
+function hns() #as handle netns
+{
+    if [ "$NAMESPACE" != "Default" ] ; then
+        echo ip netns exec $NAMESPACE
+    fi
+}

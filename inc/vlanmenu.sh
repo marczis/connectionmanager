@@ -6,10 +6,17 @@ function vlanmenu()
 }
 
 function VL_1() { #Create VLAN
-    echo
+    ifsmenu || return
+    local intf=$RET
+    dia --inputbox "Provide name for the new IF" 0 0 || return
+    local newif=$DRET
+    dia --inputbox "Provide VLAN ID" 0 0 || return 
+    local vlan=$DRET
+    sudo $(hns) ip l a l $intf name $newif type vlan id $vlan 
 }
 
 function VL_2() { #Delete VLAN
-    echo
+    ifsmenu || return
+    sudo $(hns) ip l d $(echo $RET | cut -d '@' -f 1)
 }
 #This should be NS relative feature !
