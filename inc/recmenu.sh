@@ -30,7 +30,7 @@ function REC_2()
 
 function REC_3()
 {
-    menu "IFS" "Select recording" $(\ls ${RECDIR}/*.cmr | xargs basename | nl) || return -1
+    menu "RECFILE" "Select recording" $(\ls ${RECDIR}/*.cmr | xargs basename | nl) || return -1
     RET=$(\ls ${RECDIR}/*.cmr | sed "$DRET!d")
     source $RET 
 }
