@@ -26,7 +26,7 @@ function nsselectmenu()
 function NS_1() #Create NS
 { 
     dia --inputbox "Provide name" 0 0 || return
-    sudo ip netns add $DRET
+    rec sudo ip netns add $DRET
 }
 
 function NS_2() #Remove NS

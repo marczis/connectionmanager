@@ -6,9 +6,11 @@ DEF_WLAN_DEV="wlp4s0"
 WIFI_CONF_DIR="$HOME/pro/wifi"
 VPN_CONF_DIR="$HOME/PDOne/vpn"
 NAMESPACE="Default"
-TEMPDIR="/tmp/cm"
+TEMPDIR="$HOME/.cm/tmp"
+RECDIR="$HOME/.cm/rec"
 
-sudo mkdir -p $TEMPDIR
+mkdir -p $TEMPDIR
+mkdir -p $RECDIR
 #So we won't expose the extra files on the PATH
 function src()
 {
@@ -25,6 +27,7 @@ src "nsmenu.sh"
 src "vlanmenu.sh"
 src "vpnmenu.sh"
 src "ipmenu.sh"
+src "recmenu.sh"
 
 function setup()
 {

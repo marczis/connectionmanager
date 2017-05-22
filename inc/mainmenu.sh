@@ -24,10 +24,16 @@ function CM_6()
     vpnmenu
 }
 
+function CM_9()
+{
+    recmenu
+}
+
 function CM_e()
 {
     return -1
 }
+
 
 function mainmenu()
 {
@@ -40,6 +46,7 @@ function mainmenu()
         "6" "VPN" \
         "7" " - Routing" \
         "8" " - Tap" \
+        "9" "Record" \
         "e" "Exit"
 
     if [ "$DRET" == "e" ] ; then
