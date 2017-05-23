@@ -16,7 +16,6 @@ function VL_1() { #Create VLAN
 }
 
 function VL_2() { #Delete VLAN
-    ifsmenu || return
-    sudo $(hns) ip l d $(echo $RET | cut -d '@' -f 1)
+    removeif
 }
 #This should be NS relative feature !

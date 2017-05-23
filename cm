@@ -27,6 +27,7 @@ src "nsmenu.sh"
 src "vlanmenu.sh"
 src "vpnmenu.sh"
 src "ipmenu.sh"
+src "vethmenu.sh"
 src "recmenu.sh"
 
 function setup()

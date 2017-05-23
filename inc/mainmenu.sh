@@ -24,7 +24,12 @@ function CM_6()
     vpnmenu
 }
 
-function CM_9()
+function CM_t()
+{
+    vethmenu
+}
+
+function CM_r()
 {
     recmenu
 }
@@ -46,7 +51,8 @@ function mainmenu()
         "6" "VPN" \
         "7" " - Routing" \
         "8" " - Tap" \
-        "9" "Record" \
+        "t" "Veth pair" \
+        "r" "Record / Playback" \
         "e" "Exit"
 
     if [ "$DRET" == "e" ] ; then
