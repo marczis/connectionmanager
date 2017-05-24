@@ -32,7 +32,7 @@ function NS_1() #Create NS
 function NS_2() #Remove NS
 {
     nsselectmenu || return
-    sudo ip netns del "$RET"
+    rec sudo ip netns del "$RET"
 }
 
 function NS_3() #List NS
@@ -46,11 +46,11 @@ function NS_4() #Add if
     nsselectmenu || return
     local ns=$RET
     ifsmenu || return
-    sudo ip l s $RET down
-    sudo iw dev | grep Interface | grep $RET &> /dev/null
+    rec sudo ip l s $RET down
+    rec sudo iw dev | grep Interface | grep $RET &> /dev/null
     if [ $? -ne 0 ] ; then
         #Ethernet
-        sudo ip l s $RET netns $ns
+        rec sudo ip l s $RET netns $ns
     else
         #Wifi
         echo Pass
@@ -63,8 +63,8 @@ function NS_5() #Remove if
     nsselectmenu || return
     local ns=$RET
     ifsmenu "-netns $ns" || return
-    sudo ip -netns $ns l s $RET down
-    sudo ip -netns $ns l s $RET netns 1
+    rec sudo ip -netns $ns l s $RET down
+    rec sudo ip -netns $ns l s $RET netns 1
 }
 
 function NS_6() #List if
