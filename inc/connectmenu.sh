@@ -1,12 +1,21 @@
 function connectmenu()
 {
-    menu "CCM" "Select connection" \
-        "1" "Ethernet" \
-        "2" "Ethernet Office" \
-        "3" "Known WIFI" \
-        "4" "New WIFI"
-    return $?
+    menu "PRO" "Select connection profile" $(\ls $RECDIR/*.cmr | xargs basename | sed 's/\.cmr//' | nl) || return -1
+    RET=$(\ls $RECDIR/*.cmr | sed "$DRET!d")
+    . $RET    
 }
+
+#TODO everything below should go away
+
+#function connectmenu()
+#{
+#    menu "CCM" "Select connection" \
+#        "1" "Ethernet" \
+#        "2" "Ethernet Office" \
+#        "3" "Known WIFI" \
+#        "4" "New WIFI"
+#    return $?
+#}
 
 function reset_connections()
 {

@@ -1,16 +1,16 @@
-function CM_1()
+function CM_p()
 {
     #dia --inputbox "Test" 0 0
     #ifsmenu
     connectmenu
 }
 
-function CM_2()
+function CM_n()
 {
     nsmenu
 }
 
-function CM_3()
+function CM_v()
 {
     vlanmenu
 }
@@ -43,16 +43,16 @@ function CM_e()
 function mainmenu()
 {
     menu "CM" "Connection Manager [$NAMESPACE]" \
-        "1" "Connect to the network" \
-        "2" "Handle namespaces" \
-        "3" "VLANs" \
+        "p" "Profiles" \
+        "n" "Handle namespaces" \
+        "v" "VLANs" \
         "4" " - Bridge" \
         "5" "IP" \
         "6" "VPN" \
         "7" " - Routing" \
         "8" " - Tap" \
         "t" "Veth pair" \
-        "r" "Record / Playback" \
+        "r" "Record profile" \
         "e" "Exit"
 
     if [ "$DRET" == "e" ] ; then

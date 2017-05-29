@@ -12,7 +12,7 @@ function VL_1() { #Create VLAN
     local newif=$DRET
     dia --inputbox "Provide VLAN ID" 0 0 || return 
     local vlan=$DRET
-    sudo $(hns) ip l a l $intf name $newif type vlan id $vlan 
+    rec sudo $(hns) ip l a l $intf name $newif type vlan id $vlan 
 }
 
 function VL_2() { #Delete VLAN

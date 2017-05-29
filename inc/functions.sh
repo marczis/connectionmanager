@@ -39,16 +39,21 @@ function removeif()
     rec sudo $(hns) ip l d $(echo $RET | cut -d '@' -f 1)
 }
 
-function getip()
+function tmuxx()
 {
-    local if=$1
     tmux list-windows | cut -d ' ' -f 2 | grep $if &> /dev/null
     if [ $? -eq 0 ] ; then
         local cmd="split -t"
     else
         local cmd="new-window -n"
     fi
-    rec tmux $cmd $if $horiz "sudo $(hns) dhclient -i ${if} -d -df ${TEMPDIR}/${if}.df -pf ${TEMPDIR}/${if}.pf -lf ${TEMPDIR}/${if}.lf"
+    echo "tmux $cmd"
+}
+
+function getip()
+{
+    local if=$1
+    rec $(tmuxx) $if $horiz "sudo $(hns) dhclient -i ${if} -d -df ${TEMPDIR}/${if}.df -pf ${TEMPDIR}/${if}.pf -lf ${TEMPDIR}/${if}.lf"
     rec tmux last-window
 }
 

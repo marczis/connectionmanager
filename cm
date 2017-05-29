@@ -12,6 +12,8 @@ RECDIR="$HOME/.cm/rec"
 mkdir -p $TEMPDIR
 mkdir -p $RECDIR
 #So we won't expose the extra files on the PATH
+
+DIALOGRC=$(dirname $0)/dialog.conf
 function src()
 {
     source $(dirname $0)/inc/$1

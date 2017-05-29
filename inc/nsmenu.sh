@@ -8,7 +8,7 @@ function nsmenu()
         "5" "Remove interface from namespace" \
         "6" "List interfaces in namespace" \
         "7" "Overview" \
-        "8" "Switch namespace"
+        "s" "Switch namespace"
     return $?
 }
 
@@ -87,7 +87,7 @@ function NS_7()
     } | less -R
 }
 
-function NS_8()
+function NS_s()
 {
     nsselectmenu || return
     NAMESPACE=$RET 
