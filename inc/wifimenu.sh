@@ -1,6 +1,6 @@
 function wifimenu()
 {
-    menu "WIFI" "Select a task" "c" "Connect to known network" "n" "Connect to new network"
+    menu "WIFI" "Select a task" "c" "Connect to known network" "n" " - Connect to new network"
 }
 
 function wificonfigmenu()
@@ -13,9 +13,9 @@ function wificonfigmenu()
 
 function WIFI_c()
 {
-    ifsmenu
+    wifiifsmenu || return -1
     local intf=$RET
-    wificonfigmenu 
+    wificonfigmenu || return -1
     local conf=$RET
     
     connect_wifi "$intf" "$conf"
@@ -23,9 +23,9 @@ function WIFI_c()
 
 function WIFI_n()
 {
-    ifsmenu
+    wifiifsmenu || return -1
     local intf=$RET
-    ssidmenu "$intf"
+    ssidmenu "$intf" || return -1
     local ssid="$RET" 
     local conf="${WIFI_CONF_DIR}/${ssid}.conf"
     while [ 1 ] ; do
@@ -35,7 +35,7 @@ function WIFI_n()
             break
         fi
         clear
-        cat $conf
+        echo $conf
         read
     done
     connect_wifi "$intf" "$conf"

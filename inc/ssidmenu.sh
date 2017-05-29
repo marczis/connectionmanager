@@ -2,6 +2,7 @@ function collect_wifi_info()
 {
     local intf="$1"
     local tmp=$(mktemp)
+    sudo ip l s $intf up
     for i in $(seq 1 10) ; do
         sudo iw dev $intf scan > $tmp
         if [ $? -ne 0 ] ; then
