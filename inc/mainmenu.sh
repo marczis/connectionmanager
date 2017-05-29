@@ -39,6 +39,12 @@ function CM_e()
     return -1
 }
 
+function CM_w()
+{
+    #Maybe I should think over the wifi menu, separate assoc / disassoc .. so on.
+    #But from usability point of view this is better, for hardcore wifi hack, you may need that... well future feature idea ? :)
+    wifimenu
+}
 
 function mainmenu()
 {
@@ -47,6 +53,7 @@ function mainmenu()
         "n" "Handle namespaces" \
         "v" "VLANs" \
         "4" " - Bridge" \
+        "w" "Wifi" \
         "5" "IP" \
         "6" "VPN" \
         "7" " - Routing" \

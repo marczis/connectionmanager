@@ -1,16 +1,16 @@
 #!/bin/bash
 
-#Some config
-DEF_LAN_DEV="enp0s31f6"
-DEF_WLAN_DEV="wlp4s0"
-WIFI_CONF_DIR="$HOME/pro/wifi"
-VPN_CONF_DIR="$HOME/PDOne/vpn"
+WIFI_CONF_DIR="$HOME/.cm/wifi"
+VPN_CONF_DIR="$HOME/.cm/vpn"
 NAMESPACE="Default"
 TEMPDIR="$HOME/.cm/tmp"
 RECDIR="$HOME/.cm/rec"
 
 mkdir -p $TEMPDIR
 mkdir -p $RECDIR
+mkdir -p $WIFI_CONF_DIR
+mkdir -p $VPN_CONF_DIR
+
 #So we won't expose the extra files on the PATH
 
 DIALOGRC=$(dirname $0)/dialog.conf

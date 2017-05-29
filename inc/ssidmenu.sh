@@ -1,8 +1,9 @@
 function collect_wifi_info()
 {
+    local intf="$1"
     local tmp=$(mktemp)
     for i in $(seq 1 10) ; do
-        sudo iw dev wifi scan > $tmp
+        sudo iw dev $intf scan > $tmp
         if [ $? -ne 0 ] ; then
             echo "failed, retry"
             sleep 2
@@ -47,7 +48,8 @@ function collect_wifi_info()
 
 function ssidmenu()
 {
-    collect_wifi_info
+    local intf="$1"
+    collect_wifi_info "$intf"
     local s=$(echo -e $RET | nl)
     menu "SSIDS" "Please select the SSID" $s 2>/dev/null
     RET=$(echo -e $RET | sed "$DRET!d") 

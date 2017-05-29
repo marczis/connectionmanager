@@ -42,14 +42,6 @@ function reset_connections()
     sudo ethtool -K eth0 gso off gro off tso off
 }
 
-function connect_wifi()
-{
-    local config=$1
-    tmux split -t "CM.0" "sudo wpa_supplicant -i wifi -c $config -d"
-    tmux last-pane
-    getip "wifi"
-}
-
 function CCM_1()
 {
     reset_connections
@@ -70,28 +62,3 @@ function CCM_2()
     getip "office"
 }
 
-function CCM_3()
-{
-    reset_connections
-    wifimenu 
-    connect_wifi "$RET"
-}
-
-function CCM_4()
-{
-    reset_connections
-    ssidmenu
-    local ssid="$RET" 
-    local conf="${WIFI_CONF_DIR}/${ssid}.conf"
-    while [ 1 ] ; do
-        dia --inputbox "Please provide password" 0 0 || return -1
-        echo $DRET | wpa_passphrase $ssid > $conf
-        if [ $? -eq 0 ] ; then
-            break
-        fi
-        clear
-        cat $conf
-        read
-    done
-    connect_wifi "$conf"
-}

@@ -57,3 +57,12 @@ function getip()
     rec tmux last-window
 }
 
+function connect_wifi()
+{
+    local intf=$1
+    local config=$2
+    $(tmuxx) "${intf}" "sudo wpa_supplicant -i ${intf} -c $config -d"
+    tmux last-pane
+    getip "${intf}"
+}
+
