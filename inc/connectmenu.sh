@@ -1,6 +1,6 @@
 function connectmenu()
 {
-    menu "PRO" "Select connection profile" $(\ls $RECDIR/*.cmr | xargs basename | sed 's/\.cmr//' | nl) || return -1
+    menu "PRO" "Select connection profile" $(\ls $RECDIR/*.cmr | xargs -i basename {} | sed 's/\.cmr//' | nl) || return -1
     RET=$(\ls $RECDIR/*.cmr | sed "$DRET!d")
     . $RET    
 }
