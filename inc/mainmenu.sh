@@ -46,10 +46,16 @@ function CM_w()
     wifimenu
 }
 
+function CM_2()
+{
+    l2menu
+}
+
 function mainmenu()
 {
     menu "CM" "Connection Manager [$NAMESPACE]" \
         "p" "Profiles" \
+        "2" "Interface" \
         "n" "Handle namespaces" \
         "v" "VLANs" \
         "4" " - Bridge" \

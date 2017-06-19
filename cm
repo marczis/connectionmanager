@@ -31,6 +31,7 @@ src "vpnmenu.sh"
 src "ipmenu.sh"
 src "vethmenu.sh"
 src "recmenu.sh"
+src "l2menu.sh"
 
 function setup()
 {
@@ -52,16 +53,11 @@ function main()
             break
         fi
     done
-    #case $DRET in
-    #    1) echo "Connect to the Internet woo hoo"
-    #       read
-    #        ;;
-    #esac
 }
 
 main
 
-echo "Dead jim... dead."
-read
+#echo "Dead jim... dead."
+#read
 #cleanup
 tmux kill-session

@@ -22,7 +22,6 @@ function IP_2()
     local intf=$RET
     dia --inputbox "Provide address" 0 0 || return
     rec sudo $(hns) ip a a $DRET dev ${RET}
-    rec sudo $(hns) ip l s $RET up
 }
 
 function IP_3()
