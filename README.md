@@ -1,29 +1,26 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+A very simple "connection manager" for any distro which has a couple of tools in place like
+tmux, ip, dialog. Ideal for Raspi or for network hackers in always changing environment.
 
 ### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* For CM project
+* V0 - no "official release" yet
 
 ### How do I get set up? ###
+Be sure that you have:
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+* tmux
+* ip
+* iptables
+* dhclient
+* dialog
 
 ### Contribution guidelines ###
 
-* Writing tests
-* Code review
-* Other guidelines
+* Any contribution is varmly welcomed, just get in touch, we figure out the rest ;)
 
 ### Who do I talk to? ###
 
-* Repo owner or admin
-* Other community or team contact
+* Peter. Find me on any social thingy.
