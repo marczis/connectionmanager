@@ -5,11 +5,13 @@ VPN_CONF_DIR="$HOME/.cm/vpn"
 NAMESPACE="Default"
 TEMPDIR="$HOME/.cm/tmp"
 RECDIR="$HOME/.cm/rec"
+WIFI_OTA_DIR="$HOME/temp"
 
 mkdir -p $TEMPDIR
 mkdir -p $RECDIR
 mkdir -p $WIFI_CONF_DIR
 mkdir -p $VPN_CONF_DIR
+mkdir -p $WIFI_OTA_DIR
 
 #So we won't expose the extra files on the PATH
 
@@ -32,6 +34,7 @@ src "ipmenu.sh"
 src "vethmenu.sh"
 src "recmenu.sh"
 src "l2menu.sh"
+src "brmenu.sh"
 
 function setup()
 {

@@ -14,5 +14,5 @@ function VETH_a()
 
 function VETH_d()
 {
-    removeif 
+    removeif "veth" || return -1
 }

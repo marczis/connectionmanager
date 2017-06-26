@@ -6,8 +6,14 @@ function ifsmenu()
         local netns=$1
     fi
 
-    menu "IFS" "Select Interface" $(sudo \ip $netns -br l | cut -d ' ' -f 1 | nl) || return -1
-    RET=$(sudo \ip $netns -br l | cut -d ' ' -f 1 | cut -d '@' -f 1 | sed "$DRET!d")
+    if [ "$2" != "" ] ; then
+        local type="type $2"
+    else
+        local type=""
+    fi
+
+    menu "IFS" "Select Interface" $(sudo \ip $netns -br l sh $type | cut -d ' ' -f 1 | nl) || return -1
+    RET=$(sudo \ip $netns -br l sh $type | cut -d ' ' -f 1 | cut -d '@' -f 1 | sed "$DRET!d")
 }
 
 function wifiifsmenu()

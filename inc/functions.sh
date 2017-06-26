@@ -34,8 +34,7 @@ function hns() #as handle netns
 
 function removeif()
 {
-    #TODO this should have a cool filter feature, so we can use it for remove different type of IFs
-    ifsmenu || return
+    ifsmenu "" $1 || return
     rec sudo $(hns) ip l d $(echo $RET | cut -d '@' -f 1)
 }
 
