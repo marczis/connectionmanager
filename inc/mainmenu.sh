@@ -61,6 +61,11 @@ function CM_8()
     tapmenu
 }
 
+function CM_c()
+{
+    tmux split $(dirname $0)/inc/ipconsole.sh
+}
+
 function mainmenu()
 {
     menu "CM" "Connection Manager [$NAMESPACE]" \
@@ -75,6 +80,7 @@ function mainmenu()
         "7" " - Routing" \
         "8" "Tap" \
         "t" "Veth pair" \
+        "c" "ip console" \
         "r" "Record profile" \
         "e" "Exit"
 
