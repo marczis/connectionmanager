@@ -56,6 +56,11 @@ function CM_2()
     l2menu
 }
 
+function CM_8()
+{
+    tapmenu
+}
+
 function mainmenu()
 {
     menu "CM" "Connection Manager [$NAMESPACE]" \
@@ -68,7 +73,7 @@ function mainmenu()
         "5" "IP" \
         "6" "VPN" \
         "7" " - Routing" \
-        "8" " - Tap" \
+        "8" "Tap" \
         "t" "Veth pair" \
         "r" "Record profile" \
         "e" "Exit"

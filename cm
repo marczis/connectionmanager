@@ -35,6 +35,7 @@ src "vethmenu.sh"
 src "recmenu.sh"
 src "l2menu.sh"
 src "brmenu.sh"
+src "tapmenu.sh"
 
 function setup()
 {
