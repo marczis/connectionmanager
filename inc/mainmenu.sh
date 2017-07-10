@@ -63,7 +63,7 @@ function CM_8()
 
 function CM_c()
 {
-    tmux split $(dirname $0)/inc/ipconsole.sh
+    tmux split sudo $(hns) $(dirname $0)/inc/ipconsole.sh ${NAMESPACE}
 }
 
 function mainmenu()

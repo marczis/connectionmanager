@@ -8,7 +8,7 @@ trap extrap INT
 history -c
 history -r ~/.cm/.ipc_hist
 while [ 1 ] ; do
-    read -e -p "ip " cmd
+    read -e -p "[$1] ip " cmd
     history -s $cmd
     ip -c -br $cmd
     echo
