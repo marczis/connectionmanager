@@ -3,7 +3,7 @@
 WIFI_CONF_DIR="$HOME/.cm/wifi"
 VPN_CONF_DIR="$HOME/.cm/vpn"
 NAMESPACE="Default"
-TEMPDIR="$HOME/.cm/tmp"
+TEMPDIR="/tmp/cm"
 RECDIR="$HOME/.cm/rec"
 WIFI_OTA_DIR="$HOME/temp"
 
